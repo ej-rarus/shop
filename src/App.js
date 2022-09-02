@@ -5,17 +5,19 @@ import { Button, Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import logo from './logo.svg';
 import './App.css';
 
+import 라쿤 from './img/raccoon.jpeg';
+
 function App() {
   return (
     <div className="App">
       <Navbar className="Navigate" expand="lg">
         <Container>
-          <Navbar.Brand href="#home">유리너구리</Navbar.Brand>
+          <Navbar.Brand href="home">유리너구리</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="Menu">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Event</Nav.Link>
+              <Nav.Link href="home">Home</Nav.Link>
+              <Nav.Link href="link">Event</Nav.Link>
               <NavDropdown title="Goods" id="basic-nav-dropdown">
                 <NavDropdown.Item href="sg">Stained Glass</NavDropdown.Item>
                 <NavDropdown.Item href="bags">Bags</NavDropdown.Item>
@@ -23,14 +25,36 @@ function App() {
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="outlet">Outlet</NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href="#link">Cart</Nav.Link>
+              <Nav.Link href="link">Cart</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <div>
+      <div className="main-bg">
       
-      </div>    
+      </div>
+      {/* <div className = "main-bg" style={{ backgroundImage : 'url('+ 라쿤 +')'}}></div> */}
+      <div className="container">
+        <div className="row">
+          <div className="col-md-4">
+            <img src= { 라쿤 } width="400rem"/>
+            <h4>상품명</h4>
+            <p>상품설명</p>
+          </div>
+          <div className="col-md-4">
+            <img src= { 라쿤 } width="400rem"/>
+            <h4>상품명</h4>
+            <p>상품설명</p>
+          </div>
+          <div className="col-md-4">
+            <img src= { 라쿤 } width="400rem"/>
+            <h4>상품명</h4>
+            <p>상품설명</p>
+          </div>
+        </div>
+      </div>
+      
+
     </div>
   );
 }
