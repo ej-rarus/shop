@@ -15,18 +15,15 @@ function App() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="Menu">
               <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <Nav.Link href="#link">Event</Nav.Link>
+              <NavDropdown title="Goods" id="basic-nav-dropdown">
+                <NavDropdown.Item href="sg">Stained Glass</NavDropdown.Item>
+                <NavDropdown.Item href="bags">Bags</NavDropdown.Item>
+                <NavDropdown.Item href="acc">Acc.</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
+                <NavDropdown.Item href="outlet">Outlet</NavDropdown.Item>
               </NavDropdown>
+              <Nav.Link href="#link">Cart</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
