@@ -38,23 +38,32 @@ function App() {
         <div className="row">
           <div className="col-md-4">
             <img src= { 라쿤 } width="400rem"/>
-            <h4>상품명</h4>
-            <p>상품설명</p>
+            <h4 className='product-name'>상품명</h4>
+            <p>개강은</p>
           </div>
           <div className="col-md-4">
             <img src= { 라쿤 } width="400rem"/>
-            <h4>상품명</h4>
-            <p>상품설명</p>
+            <h4 className='product-name'>상품명</h4>
+            <p>너굴맨이</p>
           </div>
           <div className="col-md-4">
             <img src= { 라쿤 } width="400rem"/>
-            <h4>상품명</h4>
-            <p>상품설명</p>
+            <h4 className='product-name'>상품명</h4>
+            <p>해치웠으니</p>
+          </div>
+          <div className="col-md-4">
+            <img src= { 라쿤 } width="400rem"/>
+            <h4 className='product-name'>상품명</h4>
+            <p>안심하라구!</p>
           </div>
         </div>
+
+        
       </div>
       
-
+      <div className="footer">
+         <p>Copyright ⓒ 2022 이얏호 all rights reserved.</p>
+      </div>
     </div>
   );
 }

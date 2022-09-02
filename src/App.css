@@ -39,6 +39,22 @@
   background-position: center;
 }
 
+.col-md-4 {
+  padding-top: 2rem;
+}
+
+.product-name {
+  padding-top: 0.5rem;
+}
+
+.footer {
+  background: #FFBF00;
+}
+
+.footer p {
+  margin: 0;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
