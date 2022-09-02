@@ -8,12 +8,12 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <Navbar bg="light" expand="lg">
+      <Navbar className="Navigate" expand="lg">
         <Container>
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+          <Navbar.Brand href="#home">유리너구리</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
+            <Nav className="Menu">
               <Nav.Link href="#home">Home</Nav.Link>
               <Nav.Link href="#link">Link</Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
@@ -30,7 +30,10 @@ function App() {
             </Nav>
           </Navbar.Collapse>
         </Container>
-      </Navbar>    
+      </Navbar>
+      <div>
+      
+      </div>    
     </div>
   );
 }
