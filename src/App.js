@@ -62,7 +62,8 @@ function App() {
       </div>
       
       <div className="footer">
-         <p>Copyright ⓒ 2022 이얏호 all rights reserved.</p>
+        <p>06974 서울특별시 동작구 흑석로6길 31</p>
+        <p>Copyright ⓒ 2022 이얏호 company all rights reserved.</p>
       </div>
     </div>
   );
