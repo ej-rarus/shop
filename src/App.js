@@ -2,11 +2,11 @@
 import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 
 import './App.css';
 import { data } from './data';
-import { Details } from './custom';
+import { Details } from './pages/custom';
 
 import 라쿤 from './img/raccoon.jpeg';
  
@@ -14,6 +14,7 @@ import 라쿤 from './img/raccoon.jpeg';
 function App() {
 
   let [shoes] = useState(data);
+  let navigate = useNavigate();
 
   return (
     <div className="App">
@@ -26,7 +27,7 @@ function App() {
             <Nav className="Menu">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="about">About</Nav.Link>
-              <Nav.Link href="link">Event</Nav.Link>
+              <Nav.Link onClick={()=>{ navigate('/detail') }}>Event</Nav.Link>
               <NavDropdown title="Goods" id="basic-nav-dropdown">
                 <NavDropdown.Item href="sg">Stained Glass</NavDropdown.Item>
                 <NavDropdown.Item href="bags">Bags</NavDropdown.Item>
@@ -58,8 +59,9 @@ function App() {
             </div>
             </div>
         </div>} />
-        <Route path="/detail" element={<div><Details></Details></div>}/>
+        <Route path="/detail" element={<div><Details/></div>}/>
         <Route path="/about" element={<div>유리너구리는...</div>}/>
+        <Route path='*' element={<div>없는 페이지라오 404 </div>}></Route>
       </Routes>
 
       
