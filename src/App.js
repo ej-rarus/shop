@@ -1,15 +1,25 @@
 /* eslint-disable */
+import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
+import { Routes, Route, Link } from "react-router-dom";
 
-import logo from './logo.svg';
 import './App.css';
+import { data } from './data';
+
 
 import 라쿤 from './img/raccoon.jpeg';
+ 
 
 function App() {
+
+  let [shoes] = useState(data);
+
   return (
     <div className="App">
+      <Routes>
+        <Route path="/detail" element={<div>상세페이지</div>}/>
+      </Routes>
       <Navbar className="Navigate" expand="lg">
         <Container>
           <Navbar.Brand href="home">유리너구리</Navbar.Brand>
@@ -36,26 +46,15 @@ function App() {
       {/* <div className = "main-bg" style={{ backgroundImage : 'url('+ 라쿤 +')'}}></div> */}
       <div className="container">
         <div className="row">
-          <div className="col-md-4">
-            <img src= { 라쿤 } width="400rem"/>
-            <h4 className='product-name'>상품명</h4>
-            <p>개강은</p>
-          </div>
-          <div className="col-md-4">
-            <img src= { 라쿤 } width="400rem"/>
-            <h4 className='product-name'>상품명</h4>
-            <p>너굴맨이</p>
-          </div>
-          <div className="col-md-4">
-            <img src= { 라쿤 } width="400rem"/>
-            <h4 className='product-name'>상품명</h4>
-            <p>해치웠으니</p>
-          </div>
-          <div className="col-md-4">
-            <img src= { 라쿤 } width="400rem"/>
-            <h4 className='product-name'>상품명</h4>
-            <p>안심하라구!</p>
-          </div>
+        {
+          shoes.map(function(md, i){
+            return(
+              <Merchandize i={i} shoes={shoes} 라쿤={라쿤}></Merchandize>
+            )
+          })
+        }
+
+
         </div>
 
         
@@ -65,6 +64,17 @@ function App() {
         <p>06974 서울특별시 동작구 흑석로6길 31</p>
         <p>Copyright ⓒ 2022 이얏호 company all rights reserved.</p>
       </div>
+    </div>
+  );
+}
+
+function Merchandize(props) {
+  return(
+    <div className="col-md-4">
+      <img src= { props.라쿤 } width="400rem"/>
+      <h4 className='product-name'>{ props.shoes[props.i].title }</h4>
+      <p>{ props.shoes[props.i].content }</p>
+      <p>{ props.shoes[props.i].price }</p>
     </div>
   );
 }
