@@ -17,17 +17,14 @@ function App() {
 
   return (
     <div className="App">
-      <Routes>
-        <Route path="/detail" element={<div>상세페이지</div>}/>
-        <Route path="/about" element={<div>유리너구리는...</div>}/>
-      </Routes>
+
       <Navbar className="Navigate" expand="lg">
         <Container>
-          <Navbar.Brand href="home">유리너구리</Navbar.Brand>
+          <Navbar.Brand href="/">유리너구리</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="Menu">
-              <Nav.Link href="home">Home</Nav.Link>
+              <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="about">About</Nav.Link>
               <Nav.Link href="link">Event</Nav.Link>
               <NavDropdown title="Goods" id="basic-nav-dropdown">
@@ -42,25 +39,30 @@ function App() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <div className="main-bg">
+
+      <Routes>
+        <Route path="/" element={
+        <div>
+          <div className="main-bg">
+          </div>
+          {/* <div className = "main-bg" style={{ backgroundImage : 'url('+ 라쿤 +')'}}></div> */}
+          <div className="container">
+          <div className="row">
+            {
+              shoes.map(function(md, i){
+              return(
+                <Merchandize i={i} shoes={shoes} 라쿤={라쿤}></Merchandize>
+              )
+              })
+            }
+          </div>
+          </div>
+        </div>} />
+        <Route path="/detail" element={<div>상세페이지</div>}/>
+        <Route path="/about" element={<div>유리너구리는...</div>}/>
+      </Routes>
+
       
-      </div>
-      {/* <div className = "main-bg" style={{ backgroundImage : 'url('+ 라쿤 +')'}}></div> */}
-      <div className="container">
-        <div className="row">
-        {
-          shoes.map(function(md, i){
-            return(
-              <Merchandize i={i} shoes={shoes} 라쿤={라쿤}></Merchandize>
-            )
-          })
-        }
-
-
-        </div>
-
-        
-      </div>
       
       <div className="footer">
         <p>06974 서울특별시 동작구 흑석로6길 31</p>
