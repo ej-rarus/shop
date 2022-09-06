@@ -42,23 +42,23 @@ function App() {
 
       <Routes>
         <Route path="/" element={
-        <div>
-          <div className="main-bg">
-          </div>
-          {/* <div className = "main-bg" style={{ backgroundImage : 'url('+ 라쿤 +')'}}></div> */}
-          <div className="container">
-          <div className="row">
-            {
-              shoes.map(function(md, i){
-              return(
-                <Merchandize i={i} shoes={shoes} 라쿤={라쿤}></Merchandize>
-              )
-              })
-            }
-          </div>
-          </div>
+          <div>
+            <div className="main-bg">
+            </div>
+            {/* <div className = "main-bg" style={{ backgroundImage : 'url('+ 라쿤 +')'}}></div> */}
+            <div className="container">
+            <div className="row">
+              {
+                shoes.map(function(md, i){
+                return(
+                  <Merchandize i={i} shoes={shoes} 라쿤={라쿤}></Merchandize>
+                )
+                })
+              }
+            </div>
+            </div>
         </div>} />
-        <Route path="/detail" element={<div>상세페이지</div>}/>
+        <Route path="/detail" element={<div><Details></Details></div>}/>
         <Route path="/about" element={<div>유리너구리는...</div>}/>
       </Routes>
 
@@ -80,6 +80,26 @@ function Merchandize(props) {
       <p>{ props.shoes[props.i].content }</p>
       <p>{ props.shoes[props.i].price }</p>
     </div>
+  );
+}
+
+function Details(props) {
+  return(
+    <div className="container">
+      <div className="row">
+        
+        <div className="col-md-6">
+        <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
+        </div>
+        
+        <div className="col-md-6">
+        <h4 className="pt-5">상품명</h4>
+        <p>상품설명</p>
+        <p>120000원</p>
+        <button className="btn btn-danger">주문하기</button> 
+        </div>
+      </div>
+    </div> 
   );
 }
 
