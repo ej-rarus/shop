@@ -19,6 +19,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/detail" element={<div>상세페이지</div>}/>
+        <Route path="/about" element={<div>유리너구리는...</div>}/>
       </Routes>
       <Navbar className="Navigate" expand="lg">
         <Container>
@@ -27,6 +28,7 @@ function App() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="Menu">
               <Nav.Link href="home">Home</Nav.Link>
+              <Nav.Link href="about">About</Nav.Link>
               <Nav.Link href="link">Event</Nav.Link>
               <NavDropdown title="Goods" id="basic-nav-dropdown">
                 <NavDropdown.Item href="sg">Stained Glass</NavDropdown.Item>
