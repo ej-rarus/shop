@@ -7,6 +7,7 @@ import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import './App.css';
 import { data } from './data';
 import { Details } from './pages/custom';
+import About from './pages/About';
 
 import 라쿤 from './img/raccoon.jpeg';
  
@@ -59,8 +60,8 @@ function App() {
             </div>
             </div>
         </div>} />
-        <Route path="/detail" element={<div><Details/></div>}/>
-        <Route path="/about" element={<div>유리너구리는...</div>}/>
+        <Route path="/detail" element={<Details/>}/>
+        <Route path="/about" element={<About/>}/>
         <Route path='*' element={<div>없는 페이지라오 404 </div>}></Route>
       </Routes>
 
