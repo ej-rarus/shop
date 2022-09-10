@@ -20,6 +20,9 @@
 .Navigate {
   background: #FFBF00;
   font-family: 'Gugi', cursive;
+  position: sticky;
+  top:0;
+
 }
 
 .Navspace {

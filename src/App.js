@@ -7,7 +7,10 @@ import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import './App.css';
 import { data } from './data';
 import { Details } from './pages/custom';
+import Error404 from './pages/404';
 import About from './pages/About';
+import Event from './pages/event';
+import { One, Two } from './components/event-content';
 
 import 라쿤 from './img/raccoon.jpeg';
  
@@ -28,7 +31,8 @@ function App() {
             <Nav className="Menu">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="about">About</Nav.Link>
-              <Nav.Link onClick={()=>{ navigate('/detail') }}>Event</Nav.Link>
+              <Nav.Link onClick={()=>{ navigate('/event') }}>Event</Nav.Link>
+              <Nav.Link onClick={()=>{ navigate('/detail') }}>Detail</Nav.Link>
               <NavDropdown title="Goods" id="basic-nav-dropdown">
                 <NavDropdown.Item href="sg">Stained Glass</NavDropdown.Item>
                 <NavDropdown.Item href="bags">Bags</NavDropdown.Item>
@@ -45,24 +49,27 @@ function App() {
       <Routes>
         <Route path="/" element={
           <div>
-            <div className="main-bg">
-            </div>
-            {/* <div className = "main-bg" style={{ backgroundImage : 'url('+ 라쿤 +')'}}></div> */}
+            <div className="main-bg"></div>
             <div className="container">
             <div className="row">
               {
                 shoes.map(function(md, i){
                 return(
-                  <Merchandize i={i} shoes={shoes} 라쿤={라쿤}></Merchandize>
+                  <Merchandize i={i} shoes={shoes} ></Merchandize>
                 )
                 })
               }
             </div>
             </div>
         </div>} />
-        <Route path="/detail" element={<Details/>}/>
+        <Route path="/detail/:id" element={<Details shoes={shoes}/>}/>
         <Route path="/about" element={<About/>}/>
-        <Route path='*' element={<div>없는 페이지라오 404 </div>}></Route>
+        <Route path='/event' element={<Event></Event>}>
+          <Route path='one' element={<One></One>}/>
+          <Route path='two' element={<Two></Two>}/>
+        </Route>
+
+        <Route path='*' element={<Error404></Error404>}></Route>
       </Routes>
 
       
@@ -78,7 +85,7 @@ function App() {
 function Merchandize(props) {
   return(
     <div className="col-md-4">
-      <img src= { props.라쿤 } width="400rem"/>
+      <img src= { process.env.PUBLIC_URL+ '/images/product00'+ (props.i+1) +'.jpg'} object-fit='cover' width='400px'/>
       <h4 className='product-name'>{ props.shoes[props.i].title }</h4>
       <p>{ props.shoes[props.i].content }</p>
       <p>{ props.shoes[props.i].price }</p>
