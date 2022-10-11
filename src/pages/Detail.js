@@ -19,7 +19,7 @@ let Box = styled.div`
 
 function Details(props) {
   useEffect(()=>{
-
+    console.log('안녕');
   })
   
   let {id} = useParams(); //url 파라미터 사용
