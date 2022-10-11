@@ -1,7 +1,17 @@
 /* eslint-disable */
 
 import { useParams } from "react-router-dom";
+import styled from "styled-components";
 
+let BlueBtn = styled.button`
+  background: blue;
+  color: black;
+  padding: 10px;
+`
+let Box = styled.div`
+  background: grey;
+  padding: 20px;
+`
 
 function Details(props) {
   let {id} = useParams();
@@ -10,6 +20,7 @@ function Details(props) {
   });
   return(
       <div className="container">
+        <Box><BlueBtn>버튼</BlueBtn></Box>
         <div className="row">
           
           <div className="col-md-6">
