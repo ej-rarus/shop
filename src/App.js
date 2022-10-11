@@ -21,7 +21,6 @@ function App() {
 
   return (
     <div className="App">
-
       <Navbar className="Navigate" expand="lg">
         <Container>
           <Navbar.Brand href="/">유리너구리</Navbar.Brand>
@@ -30,8 +29,20 @@ function App() {
             <Nav className="Menu">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="about">About</Nav.Link>
-              <Nav.Link onClick={()=>{ navigate('/event') }}>Event</Nav.Link>
-              <Nav.Link onClick={()=>{ navigate('/detail') }}>Detail</Nav.Link>
+              <Nav.Link
+                onClick={() => {
+                  navigate("/event");
+                }}
+              >
+                Event
+              </Nav.Link>
+              <Nav.Link
+                onClick={() => {
+                  navigate("/detail");
+                }}
+              >
+                Detail
+              </Nav.Link>
               <NavDropdown title="Goods" id="basic-nav-dropdown">
                 <NavDropdown.Item href="sg">Stained Glass</NavDropdown.Item>
                 <NavDropdown.Item href="bags">Bags</NavDropdown.Item>
@@ -46,33 +57,31 @@ function App() {
       </Navbar>
 
       <Routes>
-        <Route path="/" element={
-          <div>
-            <div className="main-bg"></div>
-            <div className="container">
-            <div className="row">
-              {
-                shoes.map(function(md, i){
-                return(
-                  <Merchandize i={i} shoes={shoes} ></Merchandize>
-                )
-                })
-              }
+        <Route
+          path="/"
+          element={
+            <div>
+              <div className="main-bg"></div>
+              <div className="container">
+                <div className="row">
+                  {shoes.map(function (md, i) {
+                    return <Merchandize i={i} shoes={shoes}></Merchandize>;
+                  })}
+                </div>
+              </div>
             </div>
-            </div>
-        </div>} />
-        <Route path="/detail/:id" element={<Details shoes={shoes}/>}/>
-        <Route path="/about" element={<About/>}/>
-        <Route path='/event' element={<Event></Event>}>
-          <Route path='one' element={<One></One>}/>
-          <Route path='two' element={<Two></Two>}/>
+          }
+        />
+        <Route path="/detail/:id" element={<Details shoes={shoes} />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/event" element={<Event></Event>}>
+          <Route path="one" element={<One></One>} />
+          <Route path="two" element={<Two></Two>} />
         </Route>
 
-        <Route path='*' element={<Error404></Error404>}></Route>
+        <Route path="*" element={<Error404></Error404>}></Route>
       </Routes>
 
-      
-      
       <div className="footer">
         <p>06974 서울특별시 동작구 흑석로6길 31</p>
         <p>Copyright ⓒ 2022 이얏호 company all rights reserved.</p>
