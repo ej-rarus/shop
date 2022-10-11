@@ -18,26 +18,28 @@ let Box = styled.div`
 `
 
 function Details(props) {
+
   useEffect(()=>{
-    console.log('안녕');
   })
+
+  setTimeout(()=>{ }, 2000);
 
   let [count, setCount] = useState(0);
   
   let {id} = useParams(); //url 파라미터 사용
+
   let found = props.shoes.find(function(target){
     return target.id == id
   });
+
   return (
     <div className="container">
-      {count}
-      <button
-        onClick={() => {
-          setCount(count + 1);
-        }}
-      >
-        짜잔
-      </button>
+
+      <div className="alert alert-warning">
+        2초 이내 구매시 할인
+      </div>
+
+
       <div className="row">
         <div className="col-md-6">
           <img
