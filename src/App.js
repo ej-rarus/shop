@@ -9,7 +9,7 @@ import { data } from './data';
 import { Details } from './pages/Detail';
 import Error404 from './pages/404';
 import About from './pages/About';
-import Event from './pages/event';
+import Event from './pages/Event';
 import { One, Two } from './components/event-content';
 
 import 라쿤 from './img/raccoon.jpeg';

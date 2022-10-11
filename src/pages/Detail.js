@@ -1,5 +1,6 @@
 /* eslint-disable */
 
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
@@ -17,7 +18,11 @@ let Box = styled.div`
 `
 
 function Details(props) {
-  let {id} = useParams();
+  useEffect(()=>{
+
+  })
+  
+  let {id} = useParams(); //url 파라미터 사용
   let found = props.shoes.find(function(target){
     return target.id == id
   });
