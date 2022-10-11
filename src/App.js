@@ -6,7 +6,7 @@ import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 
 import './App.css';
 import { data } from './data';
-import { Details } from './pages/custom';
+import { Details } from './pages/Detail';
 import Error404 from './pages/404';
 import About from './pages/About';
 import Event from './pages/event';
@@ -85,10 +85,12 @@ function App() {
 function Merchandize(props) {
   return(
     <div className="col-md-4">
+      <Link to={"/detail/" + (props.i)} style ={{textDecoration: 'none', color: 'black'}}>
       <img src= { process.env.PUBLIC_URL+ '/images/product'+ (props.i+1) +'.jpg'} object-fit='cover' width='400px'/>
       <h4 className='product-name'>{ props.shoes[props.i].title }</h4>
       <p>{ props.shoes[props.i].content }</p>
       <p>{ props.shoes[props.i].price }</p>
+      </Link>
     </div>
   );
 }
