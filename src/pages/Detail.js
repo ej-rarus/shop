@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
@@ -21,28 +21,44 @@ function Details(props) {
   useEffect(()=>{
     console.log('안녕');
   })
+
+  let [count, setCount] = useState(0);
   
   let {id} = useParams(); //url 파라미터 사용
   let found = props.shoes.find(function(target){
     return target.id == id
   });
-  return(
-      <div className="container">
-
-        <div className="row">
-          
-          <div className="col-md-6">
-          <img src= { process.env.PUBLIC_URL+ '/images/product'+ (found.id+1) +'.jpg'} width='400px'/>
-          </div>
-          
-          <div className="col-md-6">
-          <h4 className="pt-5">{ found.title }</h4>
-          <p> { found.content }</p>
-          <p>{ found.price }</p>
-          <button className="btn btn-danger">주문하기</button> 
-          </div>
+  return (
+    <div className="container">
+      {count}
+      <button
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        짜잔
+      </button>
+      <div className="row">
+        <div className="col-md-6">
+          <img
+            src={
+              process.env.PUBLIC_URL +
+              "/images/product" +
+              (found.id + 1) +
+              ".jpg"
+            }
+            width="400px"
+          />
         </div>
-      </div> 
+
+        <div className="col-md-6">
+          <h4 className="pt-5">{found.title}</h4>
+          <p> {found.content}</p>
+          <p>{found.price}</p>
+          <button className="btn btn-danger">주문하기</button>
+        </div>
+      </div>
+    </div>
   );
 }
 

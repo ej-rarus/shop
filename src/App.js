@@ -83,13 +83,22 @@ function App() {
 }
 
 function Merchandize(props) {
-  return(
+  return (
     <div className="col-md-4">
-      <Link to={"/detail/" + (props.i)} style ={{textDecoration: 'none', color: 'black'}}>
-      <img src= { process.env.PUBLIC_URL+ '/images/product'+ (props.i+1) +'.jpg'} object-fit='cover' width='400px'/>
-      <h4 className='product-name'>{ props.shoes[props.i].title }</h4>
-      <p>{ props.shoes[props.i].content }</p>
-      <p>{ props.shoes[props.i].price }</p>
+      <Link
+        to={"/detail/" + props.i}
+        style={{ textDecoration: "none", color: "black" }}
+      >
+        <img
+          src={
+            process.env.PUBLIC_URL + "/images/product" + (props.i + 1) + ".jpg"
+          }
+          object-fit="cover"
+          width="400px"
+        />
+        <h4 className="product-name">{props.shoes[props.i].title}</h4>
+        <p>{props.shoes[props.i].content}</p>
+        <p>{props.shoes[props.i].price}</p>
       </Link>
     </div>
   );
