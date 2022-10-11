@@ -85,7 +85,7 @@ function App() {
 function Merchandize(props) {
   return(
     <div className="col-md-4">
-      <img src= { process.env.PUBLIC_URL+ '/images/product00'+ (props.i+1) +'.jpg'} object-fit='cover' width='400px'/>
+      <img src= { process.env.PUBLIC_URL+ '/images/product'+ (props.i+1) +'.jpg'} object-fit='cover' width='400px'/>
       <h4 className='product-name'>{ props.shoes[props.i].title }</h4>
       <p>{ props.shoes[props.i].content }</p>
       <p>{ props.shoes[props.i].price }</p>

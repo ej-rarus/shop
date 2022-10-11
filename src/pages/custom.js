@@ -4,10 +4,13 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
 let BlueBtn = styled.button`
-  background: blue;
-  color: black;
+  background: ${ props => props.bg };
+  color: ${ props => props.bg == 'blue' ? 'white' : 'black' };
   padding: 10px;
 `
+
+let Newbtn = styled.button(BlueBtn);
+
 let Box = styled.div`
   background: grey;
   padding: 20px;
@@ -20,11 +23,11 @@ function Details(props) {
   });
   return(
       <div className="container">
-        <Box><BlueBtn>버튼</BlueBtn></Box>
+
         <div className="row">
           
           <div className="col-md-6">
-          <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
+          <img src= { process.env.PUBLIC_URL+ '/images/product'+ (found.id+1) +'.jpg'} width='400px'/>
           </div>
           
           <div className="col-md-6">
