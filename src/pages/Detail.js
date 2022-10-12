@@ -19,23 +19,29 @@ let Box = styled.div`
 
 function Details(props) {
 
-  useEffect(()=>{
-  })
-
-  setTimeout(()=>{ }, 2000);
-
+  let [alert, setAlert] = useState(true);
   let [count, setCount] = useState(0);
-  
+
+
   let {id} = useParams(); //url 파라미터 사용
 
   let found = props.shoes.find(function(target){
     return target.id == id
   });
 
+  useEffect(()=>{ 
+    setTimeout(()=>{ setAlert(false) }, 2000);
+  }, [count]) //mount, update시 실행되던 것이 state 변화시마다 실행되도록 만들어줌
+
+
   return (
     <div className="container">
-      <div className="alert alert-warning">2초 이내 구매시 할인</div>
-
+      {
+        alert == true
+        ? <div className="alert alert-warning">2초 이내 구매시 할인</div>
+        : null
+      }
+      
       <div className="row">
         <div className="col-md-6">
           <img
