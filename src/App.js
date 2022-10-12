@@ -64,11 +64,14 @@ function App() {
               <div className="main-bg"></div>
               <div className="container">
                 <div className="row">
-                  {shoes.map(function (md, i) {
-                    return <Merchandize i={i} shoes={shoes}></Merchandize>;
+                  { shoes.map(function (md, i) {
+                      return <Merchandize i={i} shoes={shoes}></Merchandize>;
                   })}
                 </div>
               </div>
+              <button onClick={() => {
+                
+              }}>버튼</button>
             </div>
           }
         />
