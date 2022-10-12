@@ -3,6 +3,7 @@ import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
+import axios from 'axios';
 
 import './App.css';
 import { data } from './data';
@@ -12,11 +13,14 @@ import About from './pages/About';
 import Event from './pages/Event';
 import { One, Two } from './components/event-content';
 
- 
+
+const imgErrorfix = (e)=>{
+  e.target.src = process.env.PUBLIC_URL + "/images/product" + (props.i + 1) + ".png"
+}
 
 function App() {
 
-  let [shoes] = useState(data);
+  let [shoes, setShoes] = useState(data);
   let navigate = useNavigate();
 
   return (
@@ -70,7 +74,17 @@ function App() {
                 </div>
               </div>
               <button onClick={() => {
-                
+                axios.get('https://codingapple1.github.io/shop/data2.json')
+                .then((result)=>{ 
+                  console.log(result.data);
+                  let anotherShoes=[...shoes, ...result.data]; //구조분해할당
+                  setShoes(anotherShoes);
+                  console.log(shoes);
+                 })
+                .catch(()=>{
+                  console.log('실패했다');
+                })
+
               }}>버튼</button>
             </div>
           }
@@ -106,6 +120,7 @@ function Merchandize(props) {
           }
           object-fit="cover"
           width="400px"
+          onError={imgErrorfix}
         />
         <h4 className="product-name">{props.shoes[props.i].title}</h4>
         <p>{props.shoes[props.i].content}</p>
