@@ -14,10 +14,6 @@ import Event from './pages/Event';
 import { One, Two } from './components/event-content';
 
 
-const imgErrorfix = (e)=>{
-  e.target.src = process.env.PUBLIC_URL + "/images/product" + (props.i + 1) + ".png"
-}
-
 function App() {
 
   let [shoes, setShoes] = useState(data);
@@ -85,7 +81,7 @@ function App() {
                   console.log('실패했다');
                 })
 
-              }}>버튼</button>
+              }}>더보기</button>
             </div>
           }
         />
@@ -114,13 +110,13 @@ function Merchandize(props) {
         to={"/detail/" + props.i}
         style={{ textDecoration: "none", color: "black" }}
       >
+
         <img
           src={
             process.env.PUBLIC_URL + "/images/product" + (props.i + 1) + ".jpg"
           }
           object-fit="cover"
           width="400px"
-          onError={imgErrorfix}
         />
         <h4 className="product-name">{props.shoes[props.i].title}</h4>
         <p>{props.shoes[props.i].content}</p>
