@@ -21,7 +21,11 @@ function Details(props) {
 
   let [alert, setAlert] = useState(true);
   let [count, setCount] = useState(0);
+  let [blah, setBlah] = useState("");
 
+  let onChange = (e) => {
+    setBlah(e.target.value);
+  }
 
   let {id} = useParams(); //url 파라미터 사용
 
@@ -30,18 +34,21 @@ function Details(props) {
   });
 
   useEffect(()=>{ 
-    setTimeout(()=>{ setAlert(false) }, 2000);
+    let timer = setTimeout(()=>{ setAlert(false) }, 2000);
+    return ()=>{
+      console.log(2)
+      clearTimeout(timer)
+      // useEffect가 실행되기 전에 실행되는 clean up code
+    }
   }, [count]) //mount, update시 실행되던 것이 state 변화시마다 실행되도록 만들어줌
 
 
   return (
     <div className="container">
-      {
-        alert == true
-        ? <div className="alert alert-warning">2초 이내 구매시 할인</div>
-        : null
-      }
-      
+      {alert == true ? (
+        <div className="alert alert-warning">2초 이내 구매시 할인</div>
+      ) : null}
+
       <div className="row">
         <div className="col-md-6">
           <img
@@ -56,6 +63,11 @@ function Details(props) {
         </div>
 
         <div className="col-md-6">
+          { isNaN(blah) == true ? (
+            <div className="alert alert-danger">숫자만 입력하세요!</div>
+          ) : null}
+          <input onChange={onChange} value={blah} />
+          {console.log(blah)}
           <h4 className="pt-5">{found.title}</h4>
           <p> {found.content}</p>
           <p>{found.price}</p>
