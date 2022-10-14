@@ -12,12 +12,16 @@ import Error404 from './pages/404';
 import About from './pages/About';
 import Event from './pages/Event';
 import { One, Two } from './components/event-content';
+import Loadingspinner from './components/Loading';
 
 
 function App() {
 
   let [shoes, setShoes] = useState(data);
   let navigate = useNavigate();
+  let [seemore, setSeemore] = useState(1);
+  let [loadingmode, setLoadingmode] = useState(false);
+
 
   return (
     <div className="App">
@@ -69,16 +73,25 @@ function App() {
                   })}
                 </div>
               </div>
+              <Loadingspinner></Loadingspinner>
               <button onClick={() => {
-                axios.get('https://codingapple1.github.io/shop/data2.json')
+                setSeemore(seemore+1)
+                // 로딩중 UI 표시
+                {
+                  console.log(444444)
+                }
+                axios.get('https://codingapple1.github.io/shop/data' + (seemore+1) + '.json')
                 .then((result)=>{ 
                   console.log(result.data);
                   let anotherShoes=[...shoes, ...result.data]; //구조분해할당
                   setShoes(anotherShoes);
                   console.log(shoes);
+                  // 로딩중 UI 숨기기
                  })
                 .catch(()=>{
                   console.log('실패했다');
+                  // 로딩중 UI 숨기기
+
                 })
 
               }}>더보기</button>
