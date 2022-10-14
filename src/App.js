@@ -75,9 +75,9 @@ function App() {
               </div>
               <Loadingspinner loadingmode={loadingmode}></Loadingspinner>
               <button onClick={() => {
-                setSeemore(seemore+1)
+                setSeemore(seemore+1);
                 // 로딩중 UI 표시
-                setLoadingmode(true)
+                setLoadingmode(true);
                 axios.get('https://codingapple1.github.io/shop/data' + (seemore+1) + '.json')
                 .then((result)=>{ 
                   console.log(result.data);
@@ -85,15 +85,20 @@ function App() {
                   setShoes(anotherShoes);
                   console.log(shoes);
                   // 로딩중 UI 숨기기
-                  setLoadingmode(false)
+                  setLoadingmode(false);
                  })
                 .catch(()=>{
                   console.log('실패했다');
                   // 로딩중 UI 숨기기
-                  setLoadingmode(false)
+                  setLoadingmode(false);
                   
                 })
 
+                // 한 번에 여러 서버요청 처리하기 Promise
+                Promise.all([axios.get('http://www.naver.com'), axios.get('http://www.kakao.com')])
+                .then(()=>{
+
+                })
               }}>더보기</button>
             </div>
           }
