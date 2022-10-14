@@ -116,7 +116,7 @@ function Merchandize(props) {
             process.env.PUBLIC_URL + "/images/product" + (props.i + 1) + ".jpg"
           }
           object-fit="cover"
-          width="400px"
+          width="300rem"
         />
         <h4 className="product-name">{props.shoes[props.i].title}</h4>
         <p>{props.shoes[props.i].content}</p>
