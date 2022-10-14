@@ -73,13 +73,11 @@ function App() {
                   })}
                 </div>
               </div>
-              <Loadingspinner></Loadingspinner>
+              <Loadingspinner loadingmode={loadingmode}></Loadingspinner>
               <button onClick={() => {
                 setSeemore(seemore+1)
                 // 로딩중 UI 표시
-                {
-                  console.log(444444)
-                }
+                setLoadingmode(true)
                 axios.get('https://codingapple1.github.io/shop/data' + (seemore+1) + '.json')
                 .then((result)=>{ 
                   console.log(result.data);
@@ -87,11 +85,13 @@ function App() {
                   setShoes(anotherShoes);
                   console.log(shoes);
                   // 로딩중 UI 숨기기
+                  setLoadingmode(false)
                  })
                 .catch(()=>{
                   console.log('실패했다');
                   // 로딩중 UI 숨기기
-
+                  setLoadingmode(false)
+                  
                 })
 
               }}>더보기</button>
