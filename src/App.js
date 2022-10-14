@@ -95,10 +95,12 @@ function App() {
                 })
 
                 // 한 번에 여러 서버요청 처리하기 Promise
-                Promise.all([axios.get('http://www.naver.com'), axios.get('http://www.kakao.com')])
-                .then(()=>{
+                // Promise.all([axios.get('http://www.naver.com'), axios.get('http://www.kakao.com')])
+                // .then(()=>{
 
-                })
+                // })
+                // 서버와는 원칙상 문자 데이터만 주고 받을 수 있다.
+                // JSON은 따옴표를 사용해서 우회.
               }}>더보기</button>
             </div>
           }
