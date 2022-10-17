@@ -3,13 +3,14 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Table } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { changeName } from "./../store.js";
 
 
 function Cart(){
 
     let state = useSelector((state)=>{ return state })
-
+    let dispatch = useDispatch()
 
     return (
       <div>
@@ -29,11 +30,17 @@ function Cart(){
                   <td>{state.cart[i].id}</td>
                   <td>{state.cart[i].name}</td>
                   <td>{state.cart[i].count}</td>
-                  <td>@mdo</td>
+                  <td>
+                    <button onClick={()=>{
+                      dispatch(changeName())
+                    }}>+</button>
+                  </td>
                 </tr>
                 
               )
             }
+            
+
           </tbody>
         </Table>
       </div>
