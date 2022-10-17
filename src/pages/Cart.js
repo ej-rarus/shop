@@ -3,9 +3,14 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Table } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 
 function Cart(){
+
+    let a = useSelector((state)=>{ return state })
+    console.log(a.user)
+
     return (
       <div>
         <Table>
