@@ -1,9 +1,10 @@
 /* eslint-disable */
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { Nav, NavItem } from 'react-bootstrap';
+import { Context1 } from './../App.js';
 
 let BlueBtn = styled.button`
   background: ${ props => props.bg };
@@ -20,6 +21,7 @@ let Box = styled.div`
 
 function Details(props) {
 
+  let {stash} = useContext(Context1);
   let [alert, setAlert] = useState(true);
   let [count, setCount] = useState(0);
   let [blah, setBlah] = useState("");
@@ -116,16 +118,16 @@ function Details(props) {
             </Nav.Link>
           </Nav.Item>
         </Nav>
-        <TabContent tab={tab} />
+        <TabContent tab={tab} shoes={props.shoes}/>
       </div>
     </div>
   );
 }
 
-function TabContent({tab}){
+function TabContent({tab, shoes}){
 
   let [fade, setFade] = useState('');
-
+  let {stash} = useContext(Context1)
 
   useEffect(()=>{
     let a = setTimeout(()=>{ setFade('end') }, 100)
@@ -137,7 +139,7 @@ function TabContent({tab}){
   }, [tab])
 
   return (<div className={ 'start ' + fade }>
-    { [<div>내용 0</div>,<div>내용 1</div>,<div>내용 2</div>][tab] }
+    { [<div>{shoes[0].title}</div>,<div>{shoes[1].title}</div>,<div>{shoes[2].title}</div>][tab] }
   </div>)
 
 }

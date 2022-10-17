@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { useState } from 'react';
+import { createContext, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
@@ -12,12 +12,17 @@ import Error404 from './pages/404';
 import About from './pages/About';
 import Event from './pages/Event';
 import { One, Two } from './components/event-content';
+import Cart from './pages/Cart';
 import Loadingspinner from './components/Loading';
+
+
+export let Context1 = createContext()
 
 
 function App() {
 
   let [shoes, setShoes] = useState(data);
+  let [stash, setStash] = useState([10, 11, 12]);
   let navigate = useNavigate();
   let [seemore, setSeemore] = useState(1);
   let [loadingmode, setLoadingmode] = useState(false);
@@ -54,7 +59,7 @@ function App() {
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="outlet">Outlet</NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href="link">Cart</Nav.Link>
+              <Nav.Link href="cart">Cart</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -105,12 +110,17 @@ function App() {
             </div>
           }
         />
-        <Route path="/detail/:id" element={<Details shoes={shoes} />} />
+        <Route path="/detail/:id" element={
+          <Context1.Provider value={{stash}}>
+            <Details shoes={shoes}/>
+          </Context1.Provider>          
+        } />
         <Route path="/about" element={<About />} />
         <Route path="/event" element={<Event></Event>}>
           <Route path="one" element={<One></One>} />
           <Route path="two" element={<Two></Two>} />
         </Route>
+        <Route path="/cart" element={<Cart></Cart>}></Route>
 
         <Route path="*" element={<Error404></Error404>}></Route>
       </Routes>
