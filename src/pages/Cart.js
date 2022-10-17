@@ -14,6 +14,8 @@ function Cart(){
 
     return (
       <div>
+        {state.user}의 장바구니
+
         <Table>
           <thead>
             <tr>
