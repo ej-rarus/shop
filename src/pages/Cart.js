@@ -8,8 +8,8 @@ import { useSelector } from "react-redux";
 
 function Cart(){
 
-    let a = useSelector((state)=>{ return state })
-    console.log(a)
+    let state = useSelector((state)=>{ return state })
+
 
     return (
       <div>
@@ -23,12 +23,17 @@ function Cart(){
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
+            {
+              state.cart.map((a, i)=>
+                <tr key={i}>
+                  <td>{state.cart[i].id}</td>
+                  <td>{state.cart[i].name}</td>
+                  <td>{state.cart[i].count}</td>
+                  <td>@mdo</td>
+                </tr>
+                
+              )
+            }
           </tbody>
         </Table>
       </div>
