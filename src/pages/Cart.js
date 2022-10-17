@@ -8,7 +8,7 @@ import { Table } from "react-bootstrap";
 function Cart(){
     return (
       <div>
-        <Table striped bordered hover>
+        <Table>
           <thead>
             <tr>
               <th>#</th>
