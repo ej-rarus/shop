@@ -5,10 +5,12 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { Nav, NavItem } from 'react-bootstrap';
 import { Context1 } from './../App.js';
+import { addCart } from './../store/cartSlice.js';
+
 
 let BlueBtn = styled.button`
-  background: ${ props => props.bg };
-  color: ${ props => props.bg == 'blue' ? 'white' : 'black' };
+  background: ${props => props.bg};
+  color: ${props => props.bg == 'blue' ? 'white' : 'black'};
   padding: 10px;
 `
 
@@ -21,7 +23,7 @@ let Box = styled.div`
 
 function Details(props) {
 
-  let {stash} = useContext(Context1);
+  let { stash } = useContext(Context1);
   let [alert, setAlert] = useState(true);
   let [count, setCount] = useState(0);
   let [blah, setBlah] = useState("");
@@ -32,24 +34,24 @@ function Details(props) {
     setBlah(e.target.value);
   }
 
-  let {id} = useParams(); //url 파라미터 사용
+  let { id } = useParams(); //url 파라미터 사용
 
-  let found = props.shoes.find(function(target){
+  let found = props.shoes.find(function (target) {
     return target.id == id
   });
 
-  useEffect(()=>{ 
-    let timer = setTimeout(()=>{ setAlert(false) }, 2000);
-    return ()=>{
+  useEffect(() => {
+    let timer = setTimeout(() => { setAlert(false) }, 2000);
+    return () => {
       console.log(2)
       clearTimeout(timer)
       // useEffect가 실행되기 전에 실행되는 clean up code
     }
   }, [count]) //mount, update시 실행되던 것이 state 변화시마다 실행되도록 만들어줌
 
-  useEffect(()=>{
+  useEffect(() => {
     setComponentAnime('end')
-    return() => {
+    return () => {
       setComponentAnime('')
     }
   }, [])
@@ -118,28 +120,28 @@ function Details(props) {
             </Nav.Link>
           </Nav.Item>
         </Nav>
-        <TabContent tab={tab} shoes={props.shoes}/>
+        <TabContent tab={tab} shoes={props.shoes} />
       </div>
-    </div>
+    </div >
   );
 }
 
-function TabContent({tab, shoes}){
+function TabContent({ tab, shoes }) {
 
   let [fade, setFade] = useState('');
-  let {stash} = useContext(Context1)
+  let { stash } = useContext(Context1)
 
-  useEffect(()=>{
-    let a = setTimeout(()=>{ setFade('end') }, 100)
+  useEffect(() => {
+    let a = setTimeout(() => { setFade('end') }, 100)
 
-    return ()=>{
+    return () => {
       clearTimeout(a)
       setFade('')
     }
   }, [tab])
 
-  return (<div className={ 'start ' + fade }>
-    { [<div>{shoes[0].title}</div>,<div>{shoes[1].title}</div>,<div>{shoes[2].title}</div>][tab] }
+  return (<div className={'start ' + fade}>
+    {[<div>{shoes[0].title}</div>, <div>{shoes[1].title}</div>, <div>{shoes[2].title}</div>][tab]}
   </div>)
 
 }
