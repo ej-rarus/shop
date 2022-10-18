@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { changeName, changeAge } from "./../store/userSlice.js";
-
+import { addQty, decQty } from "./../store/cartSlice.js";
 
 function Cart(){
 
@@ -34,8 +34,11 @@ function Cart(){
                   <td>{state.cart[i].count}</td>
                   <td>
                     <button onClick={()=>{
-                      dispatch(changeName())
+                      dispatch(addQty(i))
                     }}>+</button>
+                    <button onClick={()=>{
+                      dispatch(decQty(i))
+                    }}>-</button>
                   </td>
                 </tr>
                 
