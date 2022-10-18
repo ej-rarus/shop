@@ -5,7 +5,8 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { Nav, NavItem } from 'react-bootstrap';
 import { Context1 } from './../App.js';
-import { addCart } from './../store/cartSlice.js';
+import { addItem } from './../store/cartSlice.js';
+import { useDispatch } from "react-redux";
 
 
 let BlueBtn = styled.button`
@@ -85,7 +86,7 @@ function Details(props) {
             <h4 className="pt-5">{found.title}</h4>
             <p> {found.content}</p>
             <p>{found.price}</p>
-            <button className="btn btn-danger">주문하기</button>
+            <button className="btn btn-danger" onClick={() => { dispatch(addItem({ id: 1, name: 'Red Knit', count: 1 })) }}>주문하기</button>
           </div>
         </div>
         <Nav variant="tabs" defaultActiveKey="link0">

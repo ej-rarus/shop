@@ -45,13 +45,6 @@ function App() {
               >
                 Event
               </Nav.Link>
-              <Nav.Link
-                onClick={() => {
-                  navigate("/detail");
-                }}
-              >
-                Detail
-              </Nav.Link>
               <NavDropdown title="Goods" id="basic-nav-dropdown">
                 <NavDropdown.Item href="sg">Stained Glass</NavDropdown.Item>
                 <NavDropdown.Item href="bags">Bags</NavDropdown.Item>
@@ -59,7 +52,9 @@ function App() {
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="outlet">Outlet</NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href="cart">Cart</Nav.Link>
+              <Nav.Link onClick={() => {
+                navigate("/cart");
+              }}>Cart</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -73,31 +68,31 @@ function App() {
               <div className="main-bg"></div>
               <div className="container">
                 <div className="row">
-                  { shoes.map(function (md, i) {
-                      return <Merchandize i={i} shoes={shoes}></Merchandize>;
+                  {shoes.map(function (md, i) {
+                    return <Merchandize i={i} shoes={shoes}></Merchandize>;
                   })}
                 </div>
               </div>
               <Loadingspinner loadingmode={loadingmode}></Loadingspinner>
               <button onClick={() => {
-                setSeemore(seemore+1);
+                setSeemore(seemore + 1);
                 // 로딩중 UI 표시
                 setLoadingmode(true);
-                axios.get('https://codingapple1.github.io/shop/data' + (seemore+1) + '.json')
-                .then((result)=>{ 
-                  console.log(result.data);
-                  let anotherShoes=[...shoes, ...result.data]; //구조분해할당
-                  setShoes(anotherShoes);
-                  console.log(shoes);
-                  // 로딩중 UI 숨기기
-                  setLoadingmode(false);
-                 })
-                .catch(()=>{
-                  console.log('실패했다');
-                  // 로딩중 UI 숨기기
-                  setLoadingmode(false);
-                  
-                })
+                axios.get('https://codingapple1.github.io/shop/data' + (seemore + 1) + '.json')
+                  .then((result) => {
+                    console.log(result.data);
+                    let anotherShoes = [...shoes, ...result.data]; //구조분해할당
+                    setShoes(anotherShoes);
+                    console.log(shoes);
+                    // 로딩중 UI 숨기기
+                    setLoadingmode(false);
+                  })
+                  .catch(() => {
+                    console.log('실패했다');
+                    // 로딩중 UI 숨기기
+                    setLoadingmode(false);
+
+                  })
 
                 // 한 번에 여러 서버요청 처리하기 Promise
                 // Promise.all([axios.get('http://www.naver.com'), axios.get('http://www.kakao.com')])
@@ -111,9 +106,9 @@ function App() {
           }
         />
         <Route path="/detail/:id" element={
-          <Context1.Provider value={{stash}}>
-            <Details shoes={shoes}/>
-          </Context1.Provider>          
+          <Context1.Provider value={{ stash }}>
+            <Details shoes={shoes} />
+          </Context1.Provider>
         } />
         <Route path="/about" element={<About />} />
         <Route path="/event" element={<Event></Event>}>
