@@ -14,6 +14,7 @@ import Event from './pages/Event';
 import { One, Two } from './components/event-content';
 import Cart from './pages/Cart';
 import Loadingspinner from './components/Loading';
+import { useQuery } from '@tanstack/react-query';
 
 
 export let Context1 = createContext()
@@ -39,7 +40,16 @@ function App() {
   let [seemore, setSeemore] = useState(1);
   let [loadingmode, setLoadingmode] = useState(false);
 
-  axios.get()
+  let result = useQuery(['testQuery'], () => {
+    return axios.get('https://codingapple1.github.io/userdata.json').then((a) => {
+      console.log("요청됨");
+      return a.data
+    })
+  })
+
+  result.data
+  result.isLoading
+  result.error
 
   return (
     <div className="App">
@@ -69,7 +79,10 @@ function App() {
                 navigate("/cart");
               }}>Cart</Nav.Link>
             </Nav>
-            <Nav className='ms-auto'>반가워요</Nav>
+            <Nav className='ms-auto'>반가워요 {result.isLoading && '로딩중입니다'}
+              {result.error && '에러'}
+              {result.data && result.data.name}
+            </Nav>
 
           </Navbar.Collapse>
         </Container>
