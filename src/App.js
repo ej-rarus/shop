@@ -39,6 +39,7 @@ function App() {
   let [seemore, setSeemore] = useState(1);
   let [loadingmode, setLoadingmode] = useState(false);
 
+  axios.get()
 
   return (
     <div className="App">
@@ -68,6 +69,8 @@ function App() {
                 navigate("/cart");
               }}>Cart</Nav.Link>
             </Nav>
+            <Nav className='ms-auto'>반가워요</Nav>
+
           </Navbar.Collapse>
         </Container>
       </Navbar>
