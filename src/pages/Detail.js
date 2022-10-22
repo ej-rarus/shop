@@ -57,6 +57,16 @@ function Details(props) {
     }
   }, [])
 
+  useEffect(() => {
+    let got = JSON.parse(localStorage.getItem('watched'))
+    got.push(found.id)
+    let set = new Set(got)
+    let uniqueArr = [...set]
+    uniqueArr = uniqueArr.sort()
+    localStorage.setItem('watched', JSON.stringify(uniqueArr))
+
+  }, [])
+
   return (
     <div className={"start " + componentAnime}>
       <div className="container">
@@ -97,7 +107,7 @@ function Details(props) {
                 setTab(0);
               }}
             >
-              버튼0
+              상품상세정보
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
@@ -107,7 +117,7 @@ function Details(props) {
                 setTab(1);
               }}
             >
-              버튼1
+              상품구매후기
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
@@ -117,7 +127,17 @@ function Details(props) {
                 setTab(2);
               }}
             >
-              버튼2
+              상품Q&A
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link
+              eventkey="link2"
+              onClick={() => {
+                setTab(2);
+              }}
+            >
+              관련상품
             </Nav.Link>
           </Nav.Item>
         </Nav>

@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
@@ -20,6 +20,18 @@ export let Context1 = createContext()
 
 
 function App() {
+
+  useEffect(() => {
+    if (localStorage.getItem('watched') === null) {
+      localStorage.setItem('watched', JSON.stringify([]))
+    }
+  }, []);
+
+  let obj = { name: 'kim' }
+  localStorage.setItem('data', JSON.stringify(obj))
+  let getting = localStorage.getItem('data')
+
+  console.log(JSON.parse(getting).name)
 
   let [shoes, setShoes] = useState(data);
   let [stash, setStash] = useState([10, 11, 12]);
