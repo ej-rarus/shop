@@ -21,7 +21,6 @@ function Cart() {
 
   return (
     <div>
-      <button onClick={()=>{setCount(count + 1)}}>+_</button>
       <h3>{state.user.age}살 {state.user.name}의 장바구니</h3>
       <button onClick={() => { dispatch(changeAge(100)) }}>버튼</button>
       <Table>
