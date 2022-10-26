@@ -1,11 +1,18 @@
 /* eslint-disable */
 
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { changeName, changeAge } from "./../store/userSlice.js";
 import { addQty, decQty } from "./../store/cartSlice.js";
+
+function Child() {
+  return (
+    <div>Child임</div>
+  )
+}
+
 
 function Cart() {
 
@@ -14,6 +21,7 @@ function Cart() {
 
   return (
     <div>
+      <Child></Child>
       <h3>{state.user.age}살 {state.user.name}의 장바구니</h3>
       <button onClick={() => { dispatch(changeAge(100)) }}>버튼</button>
       <Table>

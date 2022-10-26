@@ -1,30 +1,13 @@
 /* eslint-disable */
 
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import styled from "styled-components";
 import { Nav, NavItem } from 'react-bootstrap';
-import { Context1 } from './../App.js';
 import { addItem } from './../store/cartSlice.js';
-import { useDispatch } from "react-redux";
 
-
-let BlueBtn = styled.button`
-  background: ${props => props.bg};
-  color: ${props => props.bg == 'blue' ? 'white' : 'black'};
-  padding: 10px;
-`
-
-let Newbtn = styled.button(BlueBtn);
-
-let Box = styled.div`
-  background: grey;
-  padding: 20px;
-`
 
 function Details(props) {
 
-  let { stash } = useContext(Context1);
   let [alert, setAlert] = useState(true);
   let [count, setCount] = useState(0);
   let [blah, setBlah] = useState("");
@@ -150,7 +133,6 @@ function Details(props) {
 function TabContent({ tab, shoes }) {
 
   let [fade, setFade] = useState('');
-  let { stash } = useContext(Context1)
 
   useEffect(() => {
     let a = setTimeout(() => { setFade('end') }, 100)
@@ -169,4 +151,4 @@ function TabContent({ tab, shoes }) {
 
 
 
-export { Details };
+export default Details;

@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { createContext, useEffect, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
@@ -7,8 +7,10 @@ import axios from 'axios';
 
 import './App.css';
 import { data } from './data';
-import { Details } from './pages/Detail';
-import Error404 from './pages/404';
+//import { Details } from './pages/Detail';
+const Details = lazy(() => import('./pages/Detail'));
+const Error404 = lazy(()=> import('./pages/404.js'));
+//import Error404 from './pages/404';
 import About from './pages/About';
 import Event from './pages/Event';
 import { One, Two } from './components/event-content';
@@ -17,7 +19,6 @@ import Loadingspinner from './components/Loading';
 import { useQuery } from '@tanstack/react-query';
 
 
-export let Context1 = createContext()
 
 
 function App() {
@@ -134,9 +135,9 @@ function App() {
           }
         />
         <Route path="/detail/:id" element={
-          <Context1.Provider value={{ stash }}>
-            <Details shoes={shoes} />
-          </Context1.Provider>
+            <Suspense fallback={<div>로딩중입니다...</div>}>
+              <Details shoes={shoes} />
+            </Suspense>
         } />
         <Route path="/about" element={<About />} />
         <Route path="/event" element={<Event></Event>}>
